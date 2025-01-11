@@ -265,7 +265,7 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [],
  <!--  /////////////////////////////////// Consumer Below ///////////////////////////////////////  -->                      
                     
                     <div id="personal" tabindex="0" role="tabpanel" aria-hidden="true" aria-labelledby="tab-1">
-                        <div data-action="dashboard.html" data-target="_top" data-method="post" data-name="cebform" data-id="cebform" onsubmit="return ValidateFieldsCeb(this.form, this)" data-title="Personal Online Banking">
+                        <div class="gunna" data-action="dashboard.html" data-target="_top" data-method="post" data-name="cebform" data-id="cebform" onsubmit="return ValidateFieldsCeb(this.form, this)" data-title="Personal Online Banking">
                             <label for="_textBoxUserId" class="notThis"><span class="visually-hidden">Enter User ID</span></label>
                             <p class="text-danger shower" id="errors" style="font-size: 20px;">Invalid Id or Password</p>
                             <input name="_textBoxUserId" type="text" maxlength="32" id="usertid" placeholder="User ID" class="user_name" />
@@ -275,10 +275,7 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [],
                             <input name="_textBoxCompanyId" type="hidden" maxlength="26" id="_cebTextBoxCompanyId" value="48U_052001772" />
                             <a  name="_buttonContinue" id="buttonsContinue" class="submit btn btn-primary btn-block" target="_top">Login</a>
                         </div>
-                        <div class="CEBEnroll">
-                            <p><a href="https://cibng.ibanking-services.com/cib/themes/cib_enroll/enroll/enroll.jsp?FIORG=48U&amp;FIFID=052001772" target="_blank">Enroll Now</a></p>
-                        </div>
-                        <!--    end CEBEnroll -->
+                                               <!--    end CEBEnroll -->
                     </div>
                     
                     
@@ -304,22 +301,7 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [],
 
 
 <!-- ---remove this section & the section below if you don't want it to shrink to buttons---  -->
-<div id="login" class="hideForLarge">
-    <button class="loginButton" data-controls="login-small" id="olb_button2" aria-expanded="false">Online Banking Login</button>
-    <div id="login-small" style="text-align: center; display: none;" data-labelledby="olb_button2">
-        <div style="text-align: center;">
-            <div class="onlinebanking">
-                <div id="tab-container" class='tab-container tabs'>
-             
-                    <!-- <div class="cebButton"><a href="https://cibng.ibanking-services.com/EamWeb/Account/Login.aspx?orgId=201_211372996&amp;FIFID=211372996&amp;brand=201_211372996&amp;appId=CeB&amp;FIORG=201" title="Login to Personal Online Banking">Personal</a></div>
-					<div class="bebButton"><a href="https://bankname.ebanking-services.com/eamweb/account/login.aspx?appId=beb&amp;brand=marblebank&amp;ec=" title="Login to Business Online Banking">Business</a></div> -->
-        
-                    <!-- end BEB -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- ---remove this section & the section below if you don't want it to shrink to buttons---  -->
 
 <style>
@@ -329,6 +311,18 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [],
     }
     .cast{
         display: flex;
+    }
+    @media (max-width:768px) {
+        .gunna{
+            
+            padding: 1.2rem;
+        }
+        .user_name{
+            background-color: white;
+            border: 1px solid black;
+            outline: none;
+
+        }
     }
 </style>
 
