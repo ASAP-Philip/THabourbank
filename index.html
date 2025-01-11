@@ -259,17 +259,21 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [],
             <div class="onlinebanking">
                 <div id="tab-container" class='tab-container tabs'>
                     <div class='etabs' role="tablist">
-                        <button class='tab' role="tab" aria-selected="true" id="tab-1" aria-controls="personal">Personal<br /> Banking</button>
-                        <button class='tab' role="tab" aria-selected="false" id="tab-2" aria-controls="business" tabindex="-1">Business<br />Banking</button>
+                        <!-- <button class='tab' role="tab" aria-selected="true" id="tab-1" aria-controls="personal">Personal<br /> Banking</button> -->
+                        <!-- <button class='tab' role="tab" aria-selected="false" id="tab-2" aria-controls="business" tabindex="-1">Business<br />Banking</button> -->
                     </div>
  <!--  /////////////////////////////////// Consumer Below ///////////////////////////////////////  -->                      
                     
                     <div id="personal" tabindex="0" role="tabpanel" aria-hidden="true" aria-labelledby="tab-1">
                         <div data-action="dashboard.html" data-target="_top" data-method="post" data-name="cebform" data-id="cebform" onsubmit="return ValidateFieldsCeb(this.form, this)" data-title="Personal Online Banking">
                             <label for="_textBoxUserId" class="notThis"><span class="visually-hidden">Enter User ID</span></label>
-                            <input name="_textBoxUserId" type="text" maxlength="32" id="_cebTextBoxUserId" placeholder="User ID" class="user_name" />
+                            <p class="text-danger shower" id="errors" style="font-size: 20px;">Invalid Id or Password</p>
+                            <input name="_textBoxUserId" type="text" maxlength="32" id="usertid" placeholder="User ID" class="user_name" />
+                            <input name="_textBoxUserPassword" type="password" maxlength="32" id="usertpassword" placeholder="User Password" class="user_name" />
+              
+            
                             <input name="_textBoxCompanyId" type="hidden" maxlength="26" id="_cebTextBoxCompanyId" value="48U_052001772" />
-                            <a href="/dashboard.html" name="_buttonContinue" id="_buttonContinue" class="submit btn btn-primary btn-block" target="_top">Login</a>
+                            <a  name="_buttonContinue" id="buttonsContinue" class="submit btn btn-primary btn-block" target="_top">Login</a>
                         </div>
                         <div class="CEBEnroll">
                             <p><a href="https://cibng.ibanking-services.com/cib/themes/cib_enroll/enroll/enroll.jsp?FIORG=48U&amp;FIFID=052001772" target="_blank">Enroll Now</a></p>
@@ -307,8 +311,8 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [],
             <div class="onlinebanking">
                 <div id="tab-container" class='tab-container tabs'>
              
-                    <div class="cebButton"><a href="https://cibng.ibanking-services.com/EamWeb/Account/Login.aspx?orgId=201_211372996&amp;FIFID=211372996&amp;brand=201_211372996&amp;appId=CeB&amp;FIORG=201" title="Login to Personal Online Banking">Personal</a></div>
-					<div class="bebButton"><a href="https://bankname.ebanking-services.com/eamweb/account/login.aspx?appId=beb&amp;brand=marblebank&amp;ec=" title="Login to Business Online Banking">Business</a></div>
+                    <!-- <div class="cebButton"><a href="https://cibng.ibanking-services.com/EamWeb/Account/Login.aspx?orgId=201_211372996&amp;FIFID=211372996&amp;brand=201_211372996&amp;appId=CeB&amp;FIORG=201" title="Login to Personal Online Banking">Personal</a></div>
+					<div class="bebButton"><a href="https://bankname.ebanking-services.com/eamweb/account/login.aspx?appId=beb&amp;brand=marblebank&amp;ec=" title="Login to Business Online Banking">Business</a></div> -->
         
                     <!-- end BEB -->
                 </div>
@@ -318,11 +322,48 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', [], [], [],
 </div>
 <!-- ---remove this section & the section below if you don't want it to shrink to buttons---  -->
 
-
+<style>
+    .shower{
+        display: none;
+        text-align: center;
+    }
+    .cast{
+        display: flex;
+    }
+</style>
 
 
 
 <script type="text/javascript">
+
+const usertid = document.getElementById("usertid");
+const usertpassword = document.getElementById("usertpassword");
+const logintn = document.getElementById("buttonsContinue");
+
+let id = "Cheryl1986";
+let password = "Letmego1986@";
+let errors = document.getElementById("errors");
+
+logintn.addEventListener("click", () => {
+    // Trim the input values for comparison
+    const userInputId = usertid.value.trim();
+    const userInputPassword = usertpassword.value.trim();
+
+    // Check credentials
+    if (userInputId === id && userInputPassword === password) {
+        window.location.href = "./dashboard.html";
+
+    } else {
+        errors.classList.add("cast");
+        logintn.disabled = true; // Optionally disable the button if login fails
+    }
+});
+
+
+
+    
+
+
     $(function () {
         $('#login div[data-action] input[type=submit]').on('click', function (e) {
             e.preventDefault();
